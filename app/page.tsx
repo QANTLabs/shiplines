@@ -1,7 +1,33 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import type { SimpleIcon } from "simple-icons";
+import {
+  siAmd,
+  siApacheflink,
+  siApachespark,
+  siClaude,
+  siDatabricks,
+  siDeepseek,
+  siDocker,
+  siGooglegemini,
+  siGooglecloud,
+  siKubernetes,
+  siLangchain,
+  siMeta,
+  siMistralai,
+  siModal,
+  siMoonshotai,
+  siN8n,
+  siNvidia,
+  siOllama,
+  siPostgresql,
+  siQdrant,
+  siQwen,
+  siSnowflake,
+  siWeightsandbiases,
+} from "simple-icons";
 
 const navLinks = [
   ["What we build", "#solutions"],
@@ -102,55 +128,83 @@ const rungs = [
   },
 ] as const;
 
-const logoFor = (domain: string) =>
-  `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
-
-const toolLogos: Partial<Record<string, string>> = {
-  Claude: logoFor("anthropic.com"),
-  "OpenAI GPT": logoFor("openai.com"),
-  "Google Gemini": logoFor("ai.google.dev"),
-  Llama: logoFor("meta.com"),
-  Mistral: logoFor("mistral.ai"),
-  DeepSeek: logoFor("deepseek.com"),
-  Qwen: logoFor("qwen.ai"),
-  Kimi: logoFor("kimi.moonshot.cn"),
-  GLM: logoFor("z.ai"),
-  AWS: logoFor("aws.amazon.com"),
-  Azure: logoFor("azure.microsoft.com"),
-  "Google Cloud": logoFor("cloud.google.com"),
-  Modal: logoFor("modal.com"),
-  Docker: logoFor("docker.com"),
-  Kubernetes: logoFor("kubernetes.io"),
-  LangChain: logoFor("langchain.com"),
-  LlamaIndex: logoFor("llamaindex.ai"),
-  LangGraph: logoFor("langchain.com"),
-  DSPy: logoFor("dspy.ai"),
-  n8n: logoFor("n8n.io"),
-  Databricks: logoFor("databricks.com"),
-  "Apache Spark": logoFor("spark.apache.org"),
-  "Apache Flink": logoFor("flink.apache.org"),
-  Snowflake: logoFor("snowflake.com"),
-  Pinecone: logoFor("pinecone.io"),
-  Weaviate: logoFor("weaviate.io"),
-  pgvector: logoFor("postgresql.org"),
-  Qdrant: logoFor("qdrant.tech"),
-  vLLM: logoFor("vllm.ai"),
-  Ollama: logoFor("ollama.com"),
-  Bedrock: logoFor("aws.amazon.com"),
-  "Vertex AI": logoFor("cloud.google.com"),
-  Together: logoFor("together.ai"),
-  Groq: logoFor("groq.com"),
-  LangSmith: logoFor("langchain.com"),
-  Langfuse: logoFor("langfuse.com"),
-  "Weights & Biases": logoFor("wandb.ai"),
-  Ragas: logoFor("ragas.io"),
-  "NeMo Guardrails": logoFor("nvidia.com"),
-  Presidio: logoFor("microsoft.com"),
-  NVIDIA: logoFor("nvidia.com"),
-  AMD: logoFor("amd.com"),
-  "DGX Spark": logoFor("nvidia.com"),
-  RTX: logoFor("nvidia.com"),
+type TechLogo = Pick<SimpleIcon, "path" | "title" | "hex"> & {
+  viewBox?: string;
 };
+
+const openAiLogo = {
+  title: "OpenAI",
+  hex: "000000",
+  viewBox: "0 0 16 16",
+  path: "M14.949 6.547a3.94 3.94 0 0 0-.348-3.273 4.11 4.11 0 0 0-4.4-1.934A4.1 4.1 0 0 0 8.423.2 4.15 4.15 0 0 0 6.305.086a4.1 4.1 0 0 0-1.891.948 4.04 4.04 0 0 0-1.158 1.753 4.1 4.1 0 0 0-1.563.679A4 4 0 0 0 .554 4.72a3.99 3.99 0 0 0 .502 4.731 3.94 3.94 0 0 0 .346 3.274 4.11 4.11 0 0 0 4.402 1.933c.382.425.852.764 1.377.995.526.231 1.095.35 1.67.346 1.78.002 3.358-1.132 3.901-2.804a4.1 4.1 0 0 0 1.563-.68 4 4 0 0 0 1.14-1.253 3.99 3.99 0 0 0-.506-4.716m-6.097 8.406a3.05 3.05 0 0 1-1.945-.694l.096-.054 3.23-1.838a.53.53 0 0 0 .265-.455v-4.49l1.366.778q.02.011.025.035v3.722c-.003 1.653-1.361 2.992-3.037 2.996m-6.53-2.75a2.95 2.95 0 0 1-.36-2.01l.095.057L5.29 12.09a.53.53 0 0 0 .527 0l3.949-2.246v1.555a.05.05 0 0 1-.022.041L6.473 13.3c-1.454.826-3.311.335-4.15-1.098m-.85-6.94A3.02 3.02 0 0 1 3.07 3.949v3.785a.51.51 0 0 0 .262.451l3.93 2.237-1.366.779a.05.05 0 0 1-.048 0L2.585 9.342a2.98 2.98 0 0 1-1.113-4.094zm11.216 2.571L8.747 5.576l1.362-.776a.05.05 0 0 1 .048 0l3.265 1.86a3 3 0 0 1 1.173 1.207 2.96 2.96 0 0 1-.27 3.2 3.05 3.05 0 0 1-1.36.997V8.279a.52.52 0 0 0-.276-.445m1.36-2.015-.097-.057-3.226-1.855a.53.53 0 0 0-.53 0L6.249 6.153V4.598a.04.04 0 0 1 .019-.04L9.533 2.7a3.07 3.07 0 0 1 3.257.139c.474.325.843.778 1.066 1.303.223.526.289 1.103.191 1.664zM5.503 8.575 4.139 7.8a.05.05 0 0 1-.026-.037V4.049c0-.57.166-1.127.476-1.607s.752-.864 1.275-1.105a3.08 3.08 0 0 1 3.234.41l-.096.054-3.23 1.838a.53.53 0 0 0-.265.455zm.742-1.577 1.758-1 1.762 1v2l-1.755 1-1.762-1z",
+} satisfies TechLogo;
+
+const microsoftLogo = {
+  title: "Microsoft",
+  hex: "5E5E5E",
+  viewBox: "0 0 16 16",
+  path: "M7.462 0H0v7.19h7.462zM16 0H8.538v7.19H16zM7.462 8.211H0V16h7.462zm8.538 0H8.538V16H16z",
+} satisfies TechLogo;
+
+const toolLogos: Partial<Record<string, TechLogo>> = {
+  Claude: siClaude,
+  "OpenAI GPT": openAiLogo,
+  "Google Gemini": siGooglegemini,
+  Llama: siMeta,
+  Mistral: siMistralai,
+  DeepSeek: siDeepseek,
+  Qwen: siQwen,
+  Kimi: siMoonshotai,
+  Azure: microsoftLogo,
+  "Google Cloud": siGooglecloud,
+  Modal: siModal,
+  Docker: siDocker,
+  Kubernetes: siKubernetes,
+  LangChain: siLangchain,
+  LangGraph: siLangchain,
+  n8n: siN8n,
+  Databricks: siDatabricks,
+  "Apache Spark": siApachespark,
+  "Apache Flink": siApacheflink,
+  Snowflake: siSnowflake,
+  pgvector: siPostgresql,
+  Qdrant: siQdrant,
+  Ollama: siOllama,
+  "Vertex AI": siGooglecloud,
+  "Weights & Biases": siWeightsandbiases,
+  "NeMo Guardrails": siNvidia,
+  Presidio: microsoftLogo,
+  NVIDIA: siNvidia,
+  AMD: siAmd,
+  "DGX Spark": siNvidia,
+  RTX: siNvidia,
+};
+
+function TechLogoMark({ logo, brand = false }: { logo: TechLogo; brand?: boolean }) {
+  const style = brand
+    ? ({ "--tech-logo-color": `#${logo.hex}` } as CSSProperties)
+    : undefined;
+
+  return (
+    <span
+      className={brand ? "tech-logo brand-logo" : "tech-logo"}
+      style={style}
+      aria-hidden="true"
+    >
+      <svg viewBox={logo.viewBox ?? "0 0 24 24"} focusable="false">
+        <path d={logo.path} />
+      </svg>
+    </span>
+  );
+}
+
+function ShiplineMark() {
+  return (
+    <span className="mk" aria-hidden="true">
+      <img src="/newlogo.png" alt="" />
+    </span>
+  );
+}
 
 const stackGroups = [
   [
@@ -296,61 +350,98 @@ const terminalLines = [
   {
     parts: [
       ["$", "pre"],
-      [' deploy --workload "summarise 200-page contract"', ""],
+      [" shipline deploy workflows/intake-agent.yaml --env prod", ""],
     ],
     delay: 0,
   },
   {
-    parts: [["# analysing: long-context, reasoning-heavy", "dim"]],
-    delay: 600,
+    parts: [
+      ["12:04:18", "dim"],
+      ["load", "route"],
+      [" client: anz-b2b-saas · workflow: support_intake_v3", ""],
+    ],
+    delay: 520,
   },
   {
     parts: [
-      ["→ routing to", "route"],
-      [" Claude ", "pick"],
-      ["✓ best fit", "ok"],
+      ["12:04:19", "dim"],
+      ["sources", "route"],
+      [" zendesk: 41k tickets · notion: 186 docs · postgres: read-only", ""],
     ],
-    delay: 1100,
+    delay: 980,
   },
   {
     parts: [
-      ["$", "pre"],
-      [' deploy --workload "classify 10k support tickets"', ""],
+      ["12:04:21", "dim"],
+      ["privacy", "route"],
+      [" Presidio PII redaction enabled · AU region locked", "ok"],
     ],
-    delay: 1900,
-  },
-  {
-    parts: [["# analysing: high-volume, low-complexity", "dim"]],
-    delay: 2500,
+    delay: 1480,
   },
   {
     parts: [
-      ["→ routing to", "route"],
-      [" open model ", "pick"],
-      ["✓ 94% cheaper", "ok"],
+      ["12:04:24", "dim"],
+      ["index", "route"],
+      [" pgvector/hnsw · chunks: 128,944 · p95 retrieval: 143ms", ""],
     ],
-    delay: 3000,
+    delay: 1960,
   },
   {
     parts: [
-      ["$", "pre"],
-      [' deploy --workload "multimodal product search"', ""],
+      ["12:04:28", "dim"],
+      ["eval", "route"],
+      [" rag_regression_v17: faithfulness .94 · answer_recall .91", "ok"],
     ],
-    delay: 3800,
+    delay: 2480,
   },
   {
     parts: [
-      ["→ routing to", "route"],
-      [" Gemini ", "pick"],
-      ["✓ native vision", "ok"],
+      ["12:04:31", "dim"],
+      ["router", "route"],
+      [" triage → Llama 3.1 8B · refunds → GPT-4.1 · contracts → Claude", "pick"],
     ],
-    delay: 4400,
+    delay: 3040,
   },
   {
-    parts: [["● 3 workloads live · runway optimised", "ok"]],
-    delay: 5100,
+    parts: [
+      ["12:04:34", "dim"],
+      ["guardrails", "route"],
+      [" citations required · human approval for account changes", ""],
+    ],
+    delay: 3580,
+  },
+  {
+    parts: [
+      ["12:04:38", "dim"],
+      ["actions", "route"],
+      [" create Linear issue · draft CRM note · Slack escalation", ""],
+    ],
+    delay: 4100,
+  },
+  {
+    parts: [
+      ["12:04:43", "dim"],
+      ["canary", "route"],
+      [" 5% traffic · p95 latency 1.82s · cost $0.021/request", "ok"],
+    ],
+    delay: 4700,
+  },
+  {
+    parts: [
+      ["12:04:47", "dim"],
+      ["handover", "route"],
+      [" repo + runbook + eval harness + cost dashboard", ""],
+    ],
+    delay: 5280,
+  },
+  {
+    parts: [["● production workflow live · traces streaming to Langfuse", "ok"]],
+    delay: 5860,
   },
 ] as const;
+
+const typingSpeed = 14;
+const linePause = 120;
 
 const reveal = {
   hidden: { opacity: 0, y: 22 },
@@ -435,40 +526,90 @@ function MotionCard({
 
 function Terminal() {
   const reduce = useReducedMotion();
-  const [visibleCount, setVisibleCount] = useState(reduce ? terminalLines.length : 0);
+  const [activeLine, setActiveLine] = useState(reduce ? terminalLines.length : 0);
+  const [activeChars, setActiveChars] = useState(0);
 
   useEffect(() => {
     if (reduce) {
-      setVisibleCount(terminalLines.length);
+      setActiveLine(terminalLines.length);
+      setActiveChars(0);
       return undefined;
     }
 
-    let index = 0;
+    let lineIndex = 0;
+    let charIndex = 0;
     let timeout: ReturnType<typeof setTimeout>;
 
     const schedule = () => {
-      setVisibleCount(index + 1);
-      index += 1;
+      const lineLength = terminalLines[lineIndex].parts.reduce(
+        (total, [text]) => total + text.length,
+        0,
+      );
 
-      if (index < terminalLines.length) {
-        const nextDelay = terminalLines[index].delay - terminalLines[index - 1].delay;
-        timeout = setTimeout(schedule, nextDelay);
-      } else {
-        timeout = setTimeout(() => {
-          index = 0;
-          setVisibleCount(0);
-          timeout = setTimeout(schedule, 260);
-        }, 3500);
+      setActiveLine(lineIndex);
+      setActiveChars(charIndex);
+
+      if (charIndex < lineLength) {
+        charIndex += 1;
+        timeout = setTimeout(schedule, typingSpeed);
+        return;
       }
+
+      lineIndex += 1;
+      charIndex = 0;
+
+      if (lineIndex < terminalLines.length) {
+        timeout = setTimeout(schedule, linePause);
+        return;
+      }
+
+      setActiveLine(terminalLines.length);
+      timeout = setTimeout(() => {
+        lineIndex = 0;
+        charIndex = 0;
+        setActiveLine(0);
+        setActiveChars(0);
+        timeout = setTimeout(schedule, 260);
+      }, 3500);
     };
 
     timeout = setTimeout(schedule, 300);
     return () => clearTimeout(timeout);
   }, [reduce]);
 
-  const visibleLines = useMemo(
-    () => terminalLines.slice(0, visibleCount),
-    [visibleCount],
+  const visibleLines = useMemo(() => terminalLines.slice(0, activeLine + 1), [
+    activeLine,
+  ]);
+
+  const renderParts = (
+    parts: (typeof terminalLines)[number]["parts"],
+    lineIndex: number,
+  ) => {
+    if (lineIndex < activeLine || reduce) {
+      return parts;
+    }
+
+    let remaining = activeChars;
+
+    return parts
+      .map(([text, cls]) => {
+        const visibleText = text.slice(0, Math.max(0, remaining));
+        remaining -= text.length;
+        return [visibleText, cls] as const;
+      })
+      .filter(([text]) => text.length > 0);
+  };
+
+  const isComplete = reduce || activeLine >= terminalLines.length;
+  const isTyping = !isComplete;
+
+  const renderedLines = useMemo(
+    () =>
+      visibleLines.map((line, lineIndex) => ({
+        parts: renderParts(line.parts, lineIndex),
+        typing: isTyping && lineIndex === activeLine,
+      })),
+    [activeChars, activeLine, isTyping, reduce, visibleLines],
   );
 
   return (
@@ -484,22 +625,23 @@ function Terminal() {
           <i />
           <i />
         </div>
-        <span className="ttl">router.deploy() — model-agnostic</span>
-        <span className="badge">● live</span>
+        <span className="ttl">shipline@prod / forward-deployed-ai</span>
+        <span className="badge">● canary</span>
       </div>
       <div className="term-body">
-        {visibleLines.map((line, index) => (
-          <div className="term-line" key={`${index}-${visibleCount}`}>
+        {renderedLines.map((line, index) => (
+          <div className="term-line" key={index}>
             {line.parts.map(([text, cls], partIndex) => (
               <span className={cls} key={partIndex}>
                 {text}
               </span>
             ))}
+            {line.typing ? <span className="cursor" /> : null}
           </div>
         ))}
         <div className="term-line">
-          {visibleCount >= terminalLines.length ? <span className="pre">$</span> : null}
-          <span className="cursor" />
+          {isComplete ? <span className="pre">$</span> : null}
+          {isComplete ? <span className="cursor" /> : null}
         </div>
       </div>
     </motion.div>
@@ -541,7 +683,7 @@ export default function Home() {
       <nav>
         <div className="nav-in">
           <a className="brand" href="#" aria-label="Shipline AI home">
-            <span className="mk">[</span>
+            <ShiplineMark />
             Shipline<span>AI</span>
           </a>
           <div className="nav-links">
@@ -571,9 +713,7 @@ export default function Home() {
         >
           <motion.div className="tags-row" variants={fadeUp}>
             <span className="tag accent">[ AI DEPLOYMENT COMPANY ]</span>
-            <span className="tag">
-              <span className="dot" /> forward deployed engineering
-            </span>
+            <span className="tag">[ Forward deployed engineering ]</span>
           </motion.div>
           <motion.h1 variants={fadeUp}>
             Ship production AI <span className="hl">at startup speed.</span>
@@ -604,11 +744,16 @@ export default function Home() {
       >
         <p>We deploy across every major model — never locked to one</p>
         <div className="cloud-track">
-          {cloudModels.map((model) => (
-            <span className="tech" key={model}>
-              {model}
-            </span>
-          ))}
+          {cloudModels.map((model) => {
+            const logo = toolLogos[model];
+
+            return (
+              <span className="tech" key={model}>
+                {logo ? <TechLogoMark logo={logo} /> : null}
+                <span className="tech-name">{model}</span>
+              </span>
+            );
+          })}
         </div>
       </motion.div>
 
@@ -636,9 +781,9 @@ export default function Home() {
               <div className="math-big">Weeks</div>
               <div className="math-sub">to AI running in production</div>
               <ul className="math-list">
-                <li>A fraction of a full-time hire</li>
-                <li>No hiring lag, no FTE risk</li>
-                <li>You keep the code and the knowledge</li>
+                <li>&nbsp;A fraction of a full-time hire</li>
+                <li> No hiring lag, no FTE risk</li>
+                <li> You keep the code and the knowledge</li>
               </ul>
             </div>
           </div>
@@ -722,11 +867,7 @@ export default function Home() {
 
                   return (
                     <span className="tech" key={chip}>
-                      {logo ? (
-                        <span className="tech-logo" aria-hidden="true">
-                          <img src={logo} alt="" loading="lazy" />
-                        </span>
-                      ) : null}
+                      {logo ? <TechLogoMark logo={logo} brand /> : null}
                       <span className="tech-name">{chip}</span>
                     </span>
                   );
@@ -857,7 +998,7 @@ export default function Home() {
       <footer className="wrap">
         <div className="foot-in">
           <a className="brand" href="#" aria-label="Shipline AI home">
-            <span className="mk">[</span>
+            <ShiplineMark />
             Shipline<span>AI</span>
           </a>
           <div className="foot-meta">hello@shipline.ai · Melbourne, AU · © 2026</div>
