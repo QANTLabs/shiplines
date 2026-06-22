@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const logoPath = `${basePath}/newlogo.png`;
+
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
@@ -9,13 +12,13 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Shipline AI — AI Deployment Company",
+  title: "Shiplines AI — AI Deployment Company",
   description:
     "Model-agnostic AI deployment for ANZ startups, from strategy to shipped production code.",
   icons: {
-    icon: "/newlogo.png",
-    shortcut: "/newlogo.png",
-    apple: "/newlogo.png",
+    icon: logoPath,
+    shortcut: logoPath,
+    apple: logoPath,
   },
 };
 

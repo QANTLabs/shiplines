@@ -36,6 +36,9 @@ const navLinks = [
   ["What you get", "#deliverables"],
 ] as const;
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const logoPath = `${basePath}/newlogo.png`;
+
 const cloudModels = [
   "Claude",
   "OpenAI GPT",
@@ -201,7 +204,7 @@ function TechLogoMark({ logo, brand = false }: { logo: TechLogo; brand?: boolean
 function ShiplineMark() {
   return (
     <span className="mk" aria-hidden="true">
-      <img src="/newlogo.png" alt="" />
+      <img src={logoPath} alt="" />
     </span>
   );
 }
@@ -997,9 +1000,9 @@ export default function Home() {
 
       <footer className="wrap">
         <div className="foot-in">
-          <a className="brand" href="#" aria-label="Shipline AI home">
+          <a className="brand" href="#" aria-label="Shiplines AI home">
             <ShiplineMark />
-            Shipline<span>AI</span>
+            Shiplines<span>AI</span>
           </a>
           <div className="foot-meta">hello@shiplines.ai · Melbourne, AU · © 2026</div>
         </div>
