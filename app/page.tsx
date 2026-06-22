@@ -1001,7 +1001,7 @@ export default function Home() {
             <ShiplineMark />
             Shipline<span>AI</span>
           </a>
-          <div className="foot-meta">hello@shipline.ai · Melbourne, AU · © 2026</div>
+          <div className="foot-meta">hello@shiplines.ai · Melbourne, AU · © 2026</div>
         </div>
       </footer>
     </>
