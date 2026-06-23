@@ -939,9 +939,12 @@ section {
   top: 50%;
   right: -11px;
   z-index: 2;
-  color: var(--line-2);
-  font-size: 1.1rem;
-  transform: translateY(-50%);
+  color: var(--accent);
+  font-size: 1.22rem;
+  font-weight: 800;
+  opacity: 0.92;
+  text-shadow: 0 0 14px rgba(244, 84, 30, 0.24);
+  transform: translateY(-50%) scale(1.06);
 }
 
 .step:last-child .arrow {

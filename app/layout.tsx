@@ -14,7 +14,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Shiplines AI — AI Deployment Company",
   description:
-    "Model-agnostic AI deployment for ANZ startups, from strategy to shipped production code.",
+    "AI deployment for ANZ startups. We work model-agnostic, from strategy through to shipped production code.",
   icons: {
     icon: logoPath,
     shortcut: logoPath,

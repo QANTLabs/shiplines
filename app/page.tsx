@@ -54,7 +54,7 @@ const cloudModels = [
 const solutions = [
   [
     "RAG & knowledge assistants",
-    "Answer engines grounded in your own docs and data — accurate and citable.",
+    "Answer engines grounded in your own docs and data, with accurate, citable answers.",
   ],
   [
     "AI agents & automation",
@@ -74,7 +74,7 @@ const solutions = [
   ],
   [
     "Fine-tuning & custom models",
-    "LoRA/QLoRA and adapters when off-the-shelf isn't enough — or costs too much.",
+    "LoRA/QLoRA and adapters when off-the-shelf models aren't enough, or cost too much.",
   ],
   [
     "Voice & speech AI",
@@ -91,8 +91,8 @@ const rungs = [
     role: "Consultancy",
     name: "Discovery",
     description:
-      "A short diagnostic: we map your workflows and tell you which two or three are worth deploying AI into — and which aren't.",
-    strong: "which two or three are worth deploying AI into",
+      "A short diagnostic. We map your workflows and tell you which two or three are worth building AI for, and which aren't.",
+    strong: "which two or three are worth building AI for",
     price: "fixed scope",
     research: false,
   },
@@ -109,8 +109,8 @@ const rungs = [
     role: "Studio",
     name: "Embedded",
     description:
-      "Forward deployed engineering — our engineers embed inside your team and ship alongside you.",
-    strong: "our engineers embed inside your team",
+      "Day-to-day embedded engineering: our engineers work inside your team and ship alongside you.",
+    strong: "our engineers work inside your team",
     price: "monthly retainer",
     research: false,
   },
@@ -127,7 +127,7 @@ const rungs = [
     role: "",
     name: "Applied Research",
     description:
-      "For genuinely hard problems — privacy-preserving and federated deployments, custom evals, on-device AI.",
+      "For harder problems: privacy-preserving and federated deployments, custom evals, on-device AI.",
     strong: "",
     price: "project / grant",
     research: true,
@@ -274,8 +274,8 @@ const stackGroups = [
 
 const why = [
   [
-    "Forward deployed, not hands-off",
-    "Our engineers embed inside your team and ship alongside you. No handoff, no slide deck that goes nowhere — production code you own.",
+    "Embedded, not hands-off",
+    "Our engineers work inside your team and ship alongside you. There's no handoff and no slide deck that goes nowhere, just production code you own.",
   ],
   [
     "No vendor lock-in",
@@ -283,7 +283,7 @@ const why = [
   ],
   [
     "You own the outcome",
-    "We transfer knowledge and leave you with maintainable systems — not a black box that depends on us.",
+    "We transfer knowledge and leave you with maintainable systems, not a black box that depends on us.",
   ],
   [
     "We handle the hard stuff",
@@ -302,7 +302,7 @@ const steps = [
   ],
   [
     "Build & ship",
-    "Our engineers embed and take it to production in weeks — tested, evaluated, live.",
+    "Our engineers work inside your team and take it to production in weeks. It gets tested and evaluated before going live.",
   ],
   [
     "Hand over",
@@ -313,7 +313,7 @@ const steps = [
 const deliverables = [
   [
     "Production AI, deployed",
-    "A working system live in your environment — not a prototype or a proof of concept.",
+    "A working system live in your environment, not a prototype or a proof of concept.",
   ],
   [
     "Source code you own",
@@ -325,7 +325,7 @@ const deliverables = [
   ],
   [
     "Knowledge transfer",
-    "Your team understands how it works and how to extend it — we don't leave you dependent.",
+    "Your team understands how it works and how to extend it. We don't leave you dependent on us.",
   ],
   [
     "A model-cost view",
@@ -333,14 +333,14 @@ const deliverables = [
   ],
   [
     "A path to what's next",
-    "An honest read on the next workflow worth deploying — or whether you even need us again.",
+    "An honest read on the next workflow worth deploying, or whether you even need us again.",
   ],
 ] as const;
 
 const principles = [
   [
     "Model-agnostic, always",
-    "We pick the model that fits the workload and your budget — Claude, GPT, Gemini, or open. Never tied to one vendor.",
+    "We pick the model that fits the workload and your budget: Claude, GPT, Gemini, or open source. We're never tied to one vendor.",
   ],
   [
     "You own everything we build",
@@ -348,7 +348,7 @@ const principles = [
   ],
   [
     "We ship, we don't just advise",
-    "Forward deployed engineering — our people embed and put working AI into production alongside your team.",
+    "Our people work inside your team and put working AI into production alongside you.",
   ],
   [
     "Honest about what's worth it",
@@ -686,7 +686,7 @@ export default function Home() {
     <>
       <div className="page-texture" aria-hidden="true" />
       <div className="banner">
-        Shiplines AI — model-agnostic AI deployment, from first prototype to production.{" "}
+        Shiplines AI builds AI systems for startups, from first prototype to production.{" "}
         <a href="#contact">Book a discovery call →</a>
       </div>
 
@@ -729,9 +729,9 @@ export default function Home() {
             Ship production AI <span className="hl">at startup speed.</span>
           </motion.h1>
           <motion.p className="lede" variants={fadeUp}>
-            We decide what AI is worth building, then we build it — and route
-            every workload to the right model, so your runway lasts. One team
-            from strategy to shipped code.
+            We decide what AI is worth building, then we build it. We route
+            every workload to the right model so your runway lasts longer.
+            One team handles everything from strategy to shipped code.
           </motion.p>
           <motion.div className="hero-actions" variants={fadeUp}>
             <a href="#contact" className="btn btn-primary">
@@ -752,7 +752,7 @@ export default function Home() {
         viewport={{ once: true, amount: 0.35 }}
         transition={{ duration: 0.48, ease: [0.22, 1, 0.36, 1] }}
       >
-        <p>We deploy across every major model — never locked to one</p>
+        <p>We deploy across every major model and never lock you into one</p>
         <div className="cloud-track">
           {cloudModels.map((model) => {
             const logo = toolLogos[model];
@@ -792,7 +792,7 @@ export default function Home() {
               <div className="math-sub">to AI running in production</div>
               <ul className="math-list">
                 <li>&nbsp;A fraction of a full-time hire</li>
-                <li> No hiring lag, no FTE risk</li>
+                <li> No hiring delays or FTE risk</li>
                 <li> You keep the code and the knowledge</li>
               </ul>
             </div>
@@ -805,9 +805,9 @@ export default function Home() {
         <div className="sec-head">
           <h2>The full range of AI we deploy.</h2>
           <p>
-            From the first knowledge assistant to privacy-grade systems most
-            shops won&apos;t touch. We scope to what moves your business — and
-            skip what doesn&apos;t.
+            We build everything from simple knowledge assistants to
+            privacy-grade systems most shops won&apos;t touch. We scope to
+            what moves your business and skip what doesn&apos;t.
           </p>
         </div>
         <motion.div
@@ -830,11 +830,12 @@ export default function Home() {
       <AnimatedSection id="work">
         <SectionMarker index="03/ 08" label="How we work" detail="One pipeline" />
         <div className="sec-head">
-          <h2>Forward deployed engineering, from one team.</h2>
+          <h2>Embedded engineering, from one team.</h2>
           <p>
-            We don&apos;t hand over a strategy deck and leave. Our engineers
-            embed inside your team and ship production AI alongside you — from
-            deciding what&apos;s worth building to running it in production.
+            We don&apos;t hand over a strategy deck and walk away. Our
+            engineers work inside your team and help ship AI into production
+            alongside you, from deciding what&apos;s worth building to running
+            it day to day.
           </p>
         </div>
         <div className="ladder">
@@ -863,8 +864,8 @@ export default function Home() {
         <div className="sec-head">
           <h2>The tools we deploy with.</h2>
           <p>
-            Model-agnostic across every layer — we choose the stack that fits
-            your workflow and your runway.
+            We stay model-agnostic across every layer and choose the stack
+            that fits your workflow and your runway.
           </p>
         </div>
         <div className="stack">
@@ -891,7 +892,8 @@ export default function Home() {
       <AnimatedSection>
         <SectionMarker index="05/ 08" label="Why us" detail="Built for runway" />
         <div className="sec-head">
-          <h2>Built for runway, not lock-in.</h2>
+          <h2>Built for runway. <br></br>
+          No lock-in.</h2>
         </div>
         <motion.div
           className="why"
@@ -946,8 +948,8 @@ export default function Home() {
         <div className="sec-head">
           <h2>What&apos;s in your hands at the end.</h2>
           <p>
-            No black boxes, no lock-in. Everything we build is yours to run,
-            change, and own.
+            There are no black boxes and no lock-in. Everything we build is
+            yours to run, change, and own.
           </p>
         </div>
         <motion.div
@@ -997,7 +999,7 @@ export default function Home() {
           <h2>Tell us what you&apos;re trying to ship.</h2>
           <p>
             A 30-minute call. We&apos;ll tell you straight whether a sprint can
-            get it to production — and roughly what it&apos;d cost.
+            get it to production, and roughly what it would cost.
           </p>
           <a href="mailto:hello@shiplines.ai" className="btn btn-primary">
             Book a discovery call
