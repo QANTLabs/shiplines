@@ -1100,6 +1100,20 @@ footer {
   margin: 0;
 }
 
+.foot-location {
+  display: grid;
+  gap: 5px;
+}
+
+.foot-location + .foot-location {
+  margin-top: 8px;
+}
+
+.foot-location strong {
+  color: var(--ink);
+  font-size: 0.78rem;
+}
+
 .foot-parent a,
 .foot-block a {
   color: var(--ink);

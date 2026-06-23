@@ -1028,9 +1028,15 @@ export default function Home() {
             </div>
             <div className="foot-block">
               <span>Locations</span>
-              <p>Melbourne, VIC</p>
-              <p>Brisbane, QLD</p>
-              <p>Colombo, Sri Lanka</p>
+              <div className="foot-location">
+                <strong>Australia</strong>
+                <p>Melbourne, VIC</p>
+                <p>Brisbane, QLD</p>
+              </div>
+              <div className="foot-location">
+                <strong>Sri Lanka</strong>
+                <p>Colombo</p>
+              </div>
             </div>
           </div>
         </div>
