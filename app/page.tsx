@@ -679,15 +679,15 @@ export default function Home() {
     <>
       <div className="page-texture" aria-hidden="true" />
       <div className="banner">
-        Shipline AI — model-agnostic AI deployment for ANZ startups.{" "}
+        Shiplines AI — model-agnostic AI deployment, from first prototype to production.{" "}
         <a href="#contact">Book a discovery call →</a>
       </div>
 
       <nav>
         <div className="nav-in">
-          <a className="brand" href="#" aria-label="Shipline AI home">
+          <a className="brand" href="#" aria-label="Shiplines AI home">
             <ShiplineMark />
-            Shipline<span>AI</span>
+            Shiplines<span>AI</span>
           </a>
           <div className="nav-links">
             {navLinks.map(([label, href]) => (
