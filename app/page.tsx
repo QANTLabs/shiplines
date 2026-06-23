@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import type { SimpleIcon } from "simple-icons";
 import {
   siAmd,
+  siAndroid,
   siApacheflink,
   siApachespark,
   siClaude,
@@ -14,7 +15,9 @@ import {
   siGooglegemini,
   siGooglecloud,
   siKubernetes,
+  siIos,
   siLangchain,
+  siMacos,
   siMeta,
   siMistralai,
   siModal,
@@ -164,6 +167,7 @@ const toolLogos: Partial<Record<string, TechLogo>> = {
   Docker: siDocker,
   Kubernetes: siKubernetes,
   LangChain: siLangchain,
+  LangSmith: siLangchain,
   LangGraph: siLangchain,
   n8n: siN8n,
   Databricks: siDatabricks,
@@ -181,6 +185,9 @@ const toolLogos: Partial<Record<string, TechLogo>> = {
   AMD: siAmd,
   "DGX Spark": siNvidia,
   RTX: siNvidia,
+  Android: siAndroid,
+  iOS: siIos,
+  Mac: siMacos,
 };
 
 function TechLogoMark({ logo, brand = false }: { logo: TechLogo; brand?: boolean }) {
@@ -262,7 +269,7 @@ const stackGroups = [
     "Guardrails & privacy",
     ["NeMo Guardrails", "Presidio", "Differential privacy", "Federated learning"],
   ],
-  ["Compute & hardware", ["NVIDIA", "AMD", "DGX Spark", "RTX"]],
+  ["Compute & hardware", ["NVIDIA", "AMD", "DGX Spark", "RTX", "Android", "iOS", "Mac"]],
 ] as const;
 
 const why = [
@@ -1000,11 +1007,32 @@ export default function Home() {
 
       <footer className="wrap">
         <div className="foot-in">
-          <a className="brand" href="#" aria-label="Shiplines AI home">
-            <ShiplineMark />
-            Shiplines<span>AI</span>
-          </a>
-          <div className="foot-meta">hello@shiplines.ai · Melbourne, AU · © 2026</div>
+          <div className="foot-brand">
+            <a className="brand" href="#" aria-label="Shiplines AI home">
+              <ShiplineMark />
+              Shiplines<span>AI</span>
+            </a>
+            <div className="foot-parent">
+              A <a href="https://qantlabs.com.au/">QANT Labs</a> company
+            </div>
+            <div className="foot-copy">© 2026 Shiplines AI</div>
+          </div>
+
+          <div className="foot-meta">
+            <div className="foot-block">
+              <span>Contact</span>
+              <a href="mailto:hello@shiplines.ai">hello@shiplines.ai</a>
+              <a href="https://www.linkedin.com/company/shiplines-ai/">
+                LinkedIn
+              </a>
+            </div>
+            <div className="foot-block">
+              <span>Locations</span>
+              <p>Melbourne, VIC</p>
+              <p>Brisbane, QLD</p>
+              <p>Colombo, Sri Lanka</p>
+            </div>
+          </div>
         </div>
       </footer>
     </>

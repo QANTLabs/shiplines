@@ -1037,17 +1037,17 @@ section {
 
 footer {
   border-top: 1px solid var(--line);
-  margin-top: 54px;
-  padding-top: 40px;
-  padding-bottom: 60px;
+  margin-top: 64px;
+  padding-top: 48px;
+  padding-bottom: 72px;
 }
 
 .foot-in {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.35fr);
+  align-items: start;
   justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
+  gap: 48px;
 }
 
 .foot-in .brand .mk {
@@ -1056,9 +1056,59 @@ footer {
   flex-basis: 40px;
 }
 
+.foot-brand {
+  display: grid;
+  gap: 14px;
+}
+
 .foot-meta {
   color: var(--ink-2);
   font-size: 0.78rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+}
+
+.foot-parent {
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 750;
+  margin-top: 4px;
+}
+
+.foot-copy {
+  color: var(--ink-2);
+  font-size: 0.78rem;
+  margin-top: 6px;
+}
+
+.foot-block {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.foot-block span {
+  color: var(--ink);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.foot-block p {
+  margin: 0;
+}
+
+.foot-parent a,
+.foot-block a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.foot-parent a:hover,
+.foot-block a:hover {
+  color: var(--accent);
 }
 
 a:focus-visible,
@@ -1081,6 +1131,11 @@ a:focus-visible,
 }
 
 @media (max-width: 920px) {
+  .foot-in {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
   .nav-links a:not(.nav-cta) {
     display: none;
   }
@@ -1110,6 +1165,11 @@ a:focus-visible,
 }
 
 @media (max-width: 700px) {
+  .foot-meta {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
   .banner {
     font-size: 0.72rem;
   }
