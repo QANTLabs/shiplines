@@ -686,7 +686,7 @@ export default function Home() {
     <>
       <div className="page-texture" aria-hidden="true" />
       <div className="banner">
-        Shiplines AI builds AI systems for startups, from first prototype to production.{" "}
+        Shiplines AI - model-agnostic AI deployment for startups and enterprise, from prototype to production.{" "}
         <a href="#contact">Book a discovery call →</a>
       </div>
 
